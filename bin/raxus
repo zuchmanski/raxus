@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+$:.unshift File.join(File.dirname(__FILE__), "..")
+
+require "rubygems"
+require "rack"
+require "lib/raxus"
+require "optparse"
+
+@options = { :port => 5000, :address => "localhost", :limit => false }
+
+ARGV.options do |opt|
+  opt.banner = 'Usage: raxus [options] file1 folder1 file2 ...'
+  opt.on('-p', '--port PORT') { |port| @options[:port] = port.to_i }
+  opt.on('-a', '--address ADDRESS') { |address| @options[:address] = address }
+  opt.on('-l', '--limit LIMIT', 'Download limit.') { |limit| @options[:limit] = limit.to_i }
+  opt.on_tail('-h', '--help', 'Show this message') { puts opt; exit }
+  opt.parse!
+end
+
+if ARGV.size == 0
+  puts "You must specify file/folder to share."
+  exit
+end
+
+@options[:files] = ARGV
+
+app = Raxus.app @options
+Rack::Handler::Thin.run app, :Port => @options[:port], :Host => @options[:address]
