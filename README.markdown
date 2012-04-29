@@ -7,7 +7,7 @@ When you run command
 
     raxus ~/some_data/ ~/image.jpg
 
-your folder "some_data" and "image.jpg" will be compressed with *zip*, application will start a mini webserver ([thin](http://code.macournoyer.com/thin/). Your files are available for download on adress YOUR_IP:5000.
+your folder "some_data" and "image.jpg" will be compressed with *zip*, application will start a mini webserver ([thin](http://code.macournoyer.com/thin/)). Your files are available for download on adress YOUR_IP:5000.
 
 Usage
 -----
