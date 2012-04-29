@@ -1,5 +1,6 @@
-require File.join(File.dirname(__FILE__), '..', 'lib' ,'raxus')
-require "spec"
+$:.unshift File.join(File.dirname(__FILE__), '../lib')
+require "raxus"
+require "rspec"
 require "rack/test"
 
 def data_path

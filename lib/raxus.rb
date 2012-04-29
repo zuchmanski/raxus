@@ -1,6 +1,6 @@
-$:.unshift File.dirname(__FILE__)
+$:.unshift File.dirname(__FILE__) + "/lib/"
 
-require "lib/compress"
+require "compress"
 
 class Raxus
 
@@ -30,9 +30,10 @@ class Raxus
       end
 
       @body = File.read(@options[:newfile])
+      @options[:filename] = File.basename(@options[:newfile])
 
       @headers["Content-Type"] = "binary/octet-stream"
-      @headers["Content-Disposition"] = "attachment; filename=\"#{@options[:newfile]}\""
+      @headers["Content-Disposition"] = "attachment; filename=\"#{@options[:filename]}\""
       @headers["Content-Length"] = @body.size.to_s
     end
 

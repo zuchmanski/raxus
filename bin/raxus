@@ -7,7 +7,7 @@ require "rack"
 require "lib/raxus"
 require "optparse"
 
-@options = { :port => 5000, :address => "localhost", :limit => false }
+@options = { :port => 5000, :address => "0.0.0.0", :limit => false }
 
 ARGV.options do |opt|
   opt.banner = 'Usage: raxus [options] file1 folder1 file2 ...'
